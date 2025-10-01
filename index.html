@@ -10,9 +10,9 @@
 
   <style>
     :root{
-      --blue-ink:#225165;       /* bleu pétrole (charte) */
-      --teal:#417D99;           /* bleu sarcelle (charte) */
-      --mustard:#FFBD59;        /* jaune moutarde (charte) */
+      --blue-ink:#225165;
+      --teal:#417D99;
+      --mustard:#FFBD59;
       --ink:#172026;
       --bg:#f6f8fb;
       --card:#ffffff;
@@ -22,335 +22,100 @@
       --shadow-soft:0 4px 12px rgba(16,24,40,.06);
       --maxw:1100px;
     }
-
-    html,body{
-      height:100%;
-    }
     body{
       margin:0;
-      font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol";
-      color:var(--ink);
+      font-family:Poppins, sans-serif;
       background:var(--bg);
-      line-height:1.5;
+      color:var(--ink);
     }
 
-    /* ===== Top strip ===== */
-    .topbar{
-      background:#ffffff;
-      border-bottom:4px solid var(--teal);
-    }
-    .topbar__inner{
-      max-width:var(--maxw);
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      gap:16px;
-      padding:10px 16px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-    }
-    .brand__logo{
-      width:56px; height:56px; border-radius:50%;
-      background:#e9eef4;
-      display:inline-block;
-      box-shadow:inset 0 0 0 2px #d6dde6;
-      background-position:center; background-size:cover; background-repeat:no-repeat;
-      /* TODO: remplace par ton logo (ex: background-image:url(logo.png)) */
-    }
-    .brand__name{
-      font-weight:700; letter-spacing:.2px; color:var(--blue-ink);
-    }
+    /* ===== Header ===== */
+    .topbar{background:#fff;border-bottom:4px solid var(--teal);}
+    .topbar__inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:16px;padding:10px 16px;}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+    .brand__logo{width:56px;height:56px;border-radius:50%;object-fit:cover;box-shadow:inset 0 0 0 2px #d6dde6;}
+    .brand__name{font-weight:700;color:var(--blue-ink);}
+    .topbar__spacer{flex:1;}
+    .topbar__action{font-size:.9rem;font-weight:600;color:var(--blue-ink);margin-right:8px;text-decoration:none;}
 
-    .topbar__spacer{ flex:1; }
-
-    .topbar__action{
-      font-size:.9rem; font-weight:600; color:var(--blue-ink);
-      text-decoration:none; margin-right:8px;
-    }
-
-    .icons{
-      display:flex; align-items:center; gap:14px;
-    }
-    .icon{
-      position:relative; width:36px; height:36px; border-radius:50%;
-      background:#eef2f6; display:grid; place-items:center;
-      box-shadow:inset 0 0 0 1px #d7dee8;
-      color:var(--blue-ink); font-weight:700;
-      user-select:none;
-    }
-    .icon--bell::after{
-      content:"1"; position:absolute; top:-4px; right:-4px;
-      width:18px; height:18px; font-size:.7rem; display:grid; place-items:center;
-      background:#ff4757; color:#fff; border-radius:99px; font-weight:700;
-      box-shadow:0 0 0 2px #fff;
-    }
+    .icons{display:flex;align-items:center;gap:14px;}
+    .icon{width:36px;height:36px;border-radius:50%;background:#eef2f6;display:grid;place-items:center;box-shadow:inset 0 0 0 1px #d7dee8;color:var(--blue-ink);font-weight:700;}
+    .icon--bell{position:relative;}
+    .icon--bell::after{content:"1";position:absolute;top:-4px;right:-4px;width:18px;height:18px;font-size:.7rem;display:grid;place-items:center;background:#ff4757;color:#fff;border-radius:50%;font-weight:700;box-shadow:0 0 0 2px #fff;}
 
     /* ===== Hero ===== */
-    .hero{
-      max-width:var(--maxw);
-      margin:18px auto 0;
-      padding:0 16px 16px;
-    }
+    .hero{max-width:var(--maxw);margin:18px auto 0;padding:0 16px 16px;}
+    .hero__grid{display:grid;grid-template-columns:2fr 1.5fr;gap:22px;align-items:stretch;}
+    .hero__image video{width:100%;height:100%;border-radius:var(--radius);box-shadow:var(--shadow);object-fit:cover;}
 
-    .hero__grid{
-      display:grid;
-      grid-template-columns: 2fr 1.5fr;
-      gap:22px;
-      align-items:stretch;
-    }
-    .hero__image{
-      border-radius:var(--radius);
-      background:#dfe6ee;
-      min-height:200px;
-      box-shadow:var(--shadow);
-      background-position:center; background-size:cover; background-repeat:no-repeat;
-      /* TODO: <img> possible si tu préfères */
-    }
+    .hero__cta{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .tile{background:var(--mustard);border-radius:14px;padding:22px 18px;font-weight:700;text-align:center;box-shadow:var(--shadow-soft);cursor:pointer;}
+    .tile--alt{background:#ffdca0;}
+    .btn{padding:14px 18px;border-radius:10px;font-weight:700;background:var(--teal);color:#fff;box-shadow:var(--shadow);grid-column:1 / -1;cursor:pointer;}
 
-    .hero__cta{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-      align-content:start;
-    }
-
-    .tile{
-      background:var(--mustard);
-      color:#1c1c1c;
-      border-radius:14px;
-      padding:22px 18px;
-      font-weight:700;
-      text-align:center;
-      box-shadow:var(--shadow-soft);
-      cursor:pointer;
-      transition:transform .08s ease, filter .08s ease;
-    }
-    .tile--alt{
-      background:#ffdca0;
-    }
-    .tile:hover{ transform:translateY(-2px); filter:saturate(1.05); }
-
-    .btn{
-      appearance:none; border:0; cursor:pointer;
-      padding:14px 18px; border-radius:10px; font-weight:700;
-      background:var(--teal); color:#fff; box-shadow:var(--shadow);
-      transition:transform .08s ease, filter .08s ease;
-    }
-    .btn:hover{ transform:translateY(-1px); }
-    .btn--ghost{
-      background:#fff; color:var(--blue-ink); box-shadow:inset 0 0 0 2px var(--blue-ink);
-    }
-
-    /* ===== Section: Comment ça marche ===== */
-    .section{
-      max-width:var(--maxw);
-      margin:40px auto 0;
-      padding:0 16px;
-    }
-    .section__title{
-      text-align:center;
-      font-size:clamp(22px, 2.6vw, 28px);
-      margin:6px 0 6px;
-      letter-spacing:.2px;
-    }
-    .section__lead{
-      color:var(--muted);
-      text-align:center;
-      max-width:700px; margin:0 auto 18px;
-      font-size:.98rem;
-    }
-
-    .how{
-      background:var(--card);
-      border-radius:var(--radius);
-      padding:20px;
-      box-shadow:var(--shadow);
-      margin-top:18px;
-    }
-    .how__canvas{
-      border-radius:12px;
-      background:#dfe6ee;
-      height:320px;
-      display:block;
-      background-position:center; background-repeat:no-repeat; background-size:cover;
-      /* TODO: remplace par image illustrée */
-    }
-
-    /* ===== Section: Pourquoi nous ? ===== */
-    .why{
-      display:grid;
-      grid-template-columns: 1.1fr 1.2fr;
-      gap:28px;
-      align-items:start;
-      margin-top:40px;
-    }
-    .card{
-      background:var(--card);
-      border-radius:var(--radius);
-      padding:22px;
-      box-shadow:var(--shadow);
-    }
-    .why__text h3{
-      margin:0 0 8px; font-size:clamp(20px,2.2vw,24px);
-    }
-    .why__bullet{
-      display:grid; grid-template-columns:auto 1fr; gap:14px;
-      align-items:start; padding:12px; border-radius:12px;
-    }
-    .why__icon{
-      width:40px; height:40px; border-radius:50%;
-      background:#e8f1f6; display:grid; place-items:center;
-      color:var(--teal); font-weight:700;
-      box-shadow:inset 0 0 0 1px #d2e3ec;
-      user-select:none;
-    }
-    .why__bullet h4{
-      margin:.2rem 0 .15rem; font-size:1.02rem;
-    }
-    .why__bullet p{
-      margin:0; color:var(--muted); font-size:.95rem;
-    }
+    /* ===== Sections ===== */
+    .section{max-width:var(--maxw);margin:40px auto 0;padding:0 16px;}
+    .section__title{text-align:center;font-size:clamp(22px,2.6vw,28px);}
+    .section__lead{text-align:center;max-width:700px;margin:0 auto 18px;color:var(--muted);}
+    .how video{width:100%;border-radius:12px;box-shadow:var(--shadow);}
 
     /* ===== Footer ===== */
-    footer{
-      margin-top:56px; padding:28px 16px 48px;
-      background:#fff; border-top:1px solid #e8edf3;
-    }
-    .foot__inner{
-      max-width:var(--maxw);
-      margin:0 auto;
-      display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap;
-      color:var(--muted); font-size:.92rem;
-    }
-    .foot__links a{
-      color:var(--blue-ink); text-decoration:none; margin-right:14px; font-weight:600;
-    }
-    .foot__brand{
-      display:flex; align-items:center; gap:10px; color:var(--blue-ink); font-weight:700;
-    }
-    .foot__brand .brand__logo{ width:40px; height:40px; }
-
-    /* ===== Utilities ===== */
-    .sr-only{ position:absolute !important; width:1px; height:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 960px){
-      .hero__grid{ grid-template-columns:1fr; }
-      .hero__image{ min-height:220px; }
-      .why{ grid-template-columns:1fr; }
-      .topbar__action{ display:none; }
-    }
-    @media (max-width: 520px){
-      .hero__cta{ grid-template-columns:1fr; }
-      .tile{ padding:18px 16px; }
-    }
+    footer{margin-top:56px;padding:28px 16px 48px;background:#fff;border-top:1px solid #e8edf3;}
+    .foot__inner{max-width:var(--maxw);margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;color:var(--muted);}
+    .foot__brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--blue-ink);}
+    .foot__brand img{width:40px;height:40px;border-radius:50%;object-fit:cover;}
+    .foot__links a{color:var(--blue-ink);margin-right:14px;font-weight:600;text-decoration:none;}
   </style>
 </head>
 <body>
 
-  <!-- ===== En-tête ===== -->
-  <header class="topbar" role="banner">
+  <!-- ===== Header ===== -->
+  <header class="topbar">
     <div class="topbar__inner">
-      <a href="#" class="brand" aria-label="Retour à l’accueil">
-        <span class="brand__logo" aria-hidden="true"></span>
+      <a href="#" class="brand">
+        <img src="Logo factotum.JPG" alt="Logo Factotum" class="brand__logo">
         <span class="brand__name">Les Factotums</span>
       </a>
-
       <div class="topbar__spacer"></div>
-
       <a class="topbar__action" href="#">Changer de profil</a>
-
-      <div class="icons" aria-label="Accès rapide">
-        <div class="icon icon--bell" title="Notifications" aria-label="Notifications (1)">🔔</div>
-        <div class="icon" title="Mon compte" aria-label="Mon compte">👤</div>
+      <div class="icons">
+        <div class="icon icon--bell">🔔</div>
+        <div class="icon">👤</div>
       </div>
     </div>
   </header>
 
-  <!-- ===== Bandeau héro ===== -->
+  <!-- ===== Hero ===== -->
   <section class="hero">
     <div class="hero__grid">
-      <div class="hero__image" role="img" aria-label="Visuel d’illustration - à remplacer par une photo">
-        <!-- TODO image héro (ex: <img ...>) ou background-image -->
+      <div class="hero__image">
+        <video src="lesfactotums.mp4" autoplay muted loop playsinline></video>
       </div>
-
       <div class="hero__cta">
-        <button class="tile" type="button">📝<br>Faire une demande</button>
-        <button class="tile tile--alt" type="button">📣<br>Voir les annonces</button>
-        <button class="tile" type="button">💬<br>Messagerie</button>
-        <button class="btn" type="button" style="grid-column:1 / -1;">Vos demandes</button>
+        <button class="tile">📝<br>Faire une demande</button>
+        <button class="tile tile--alt">📣<br>Voir les annonces</button>
+        <button class="tile">💬<br>Messagerie</button>
+        <button class="btn">Vos demandes</button>
       </div>
     </div>
   </section>
 
   <!-- ===== Comment ça marche ===== -->
-  <section class="section" aria-labelledby="how-title">
-    <h2 id="how-title" class="section__title">Comment ça marche&nbsp;?</h2>
+  <section class="section">
+    <h2 class="section__title">Comment ça marche ?</h2>
     <p class="section__lead">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, 
-      adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor.
     </p>
-
     <div class="how">
-      <div class="how__canvas" role="img" aria-label="Illustration explicative — remplacez par votre animation ou image">
-        <!-- TODO: illustration (vidéo/image) 780×420 env. -->
-      </div>
+      <video src="lesfactotums.mp4" controls></video>
     </div>
   </section>
 
-  <!-- ===== Pourquoi nous ? ===== -->
-  <section class="section" aria-labelledby="why-title">
-    <div class="why">
-      <article class="card why__text">
-        <h3 id="why-title">Pourquoi nous&nbsp;?</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar venenatis urna, porttitor aliquam felis tempus et.
-          Vivamus viverra nunc quam, ac interdum metus tincidunt quis. Vestibulum ornare malesuada orci sit amet laoreet.
-        </p>
-        <p>
-          Pellentesque feugiat ultricies velit, eget sollicitudin est blandit vitae. Mauris ut auctor turpis. Aliquam erat volutpat.
-        </p>
-      </article>
-
-      <div class="card">
-        <div class="why__bullet">
-          <div class="why__icon">★</div>
-          <div>
-            <h4>Qualité &amp; fiabilité</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </div>
-        <div class="why__bullet">
-          <div class="why__icon">🛟</div>
-          <div>
-            <h4>Accompagnement</h4>
-            <p>Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-          </div>
-        </div>
-        <div class="why__bullet">
-          <div class="why__icon">🔒</div>
-          <div>
-            <h4>Sécurisé</h4>
-            <p>Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>
-          </div>
-        </div>
-        <div class="why__bullet">
-          <div class="why__icon">👍</div>
-          <div>
-            <h4>Simple et accessible</h4>
-            <p>Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Pied de page ===== -->
-  <footer role="contentinfo">
+  <!-- ===== Footer ===== -->
+  <footer>
     <div class="foot__inner">
       <div class="foot__brand">
-        <span class="brand__logo" aria-hidden="true"></span>
+        <img src="Logo factotum.JPG" alt="Logo Factotum">
         <span>Les Factotums</span>
       </div>
       <div class="foot__links">
@@ -364,7 +129,6 @@
   </footer>
 
   <script>
-    // Met simplement l'année courante
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
