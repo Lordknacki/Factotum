@@ -3,72 +3,51 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Les Factotums – Accueil (prototype)</title>
-
-  <!-- Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+  <title>Les Factotums – Accueil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
       --blue-ink:#225165;
       --teal:#417D99;
       --mustard:#FFBD59;
-      --ink:#172026;
       --bg:#f6f8fb;
       --card:#ffffff;
-      --muted:#6b7785;
-      --radius:16px;
-      --shadow:0 8px 24px rgba(16,24,40,.06);
-      --shadow-soft:0 4px 12px rgba(16,24,40,.06);
+      --shadow:0 6px 16px rgba(0,0,0,.1);
+      --radius:14px;
       --maxw:1100px;
     }
-    body{
-      margin:0;
-      font-family:Poppins, sans-serif;
-      background:var(--bg);
-      color:var(--ink);
-    }
-
+    body{margin:0;font-family:Poppins, sans-serif;background:var(--bg);color:#222;}
     /* ===== Header ===== */
     .topbar{background:#fff;border-bottom:4px solid var(--teal);}
     .topbar__inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:16px;padding:10px 16px;}
     .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
-    .brand__logo{width:56px;height:56px;border-radius:50%;object-fit:cover;box-shadow:inset 0 0 0 2px #d6dde6;}
+    .brand__logo{width:50px;height:50px;border-radius:50%;object-fit:cover;}
     .brand__name{font-weight:700;color:var(--blue-ink);}
     .topbar__spacer{flex:1;}
-    .topbar__action{font-size:.9rem;font-weight:600;color:var(--blue-ink);margin-right:8px;text-decoration:none;}
-
-    .icons{display:flex;align-items:center;gap:14px;}
-    .icon{width:36px;height:36px;border-radius:50%;background:#eef2f6;display:grid;place-items:center;box-shadow:inset 0 0 0 1px #d7dee8;color:var(--blue-ink);font-weight:700;}
-    .icon--bell{position:relative;}
-    .icon--bell::after{content:"1";position:absolute;top:-4px;right:-4px;width:18px;height:18px;font-size:.7rem;display:grid;place-items:center;background:#ff4757;color:#fff;border-radius:50%;font-weight:700;box-shadow:0 0 0 2px #fff;}
-
+    .icons{display:flex;gap:12px;}
+    .icon{width:34px;height:34px;border-radius:50%;background:#eef2f6;display:grid;place-items:center;}
     /* ===== Hero ===== */
-    .hero{max-width:var(--maxw);margin:18px auto 0;padding:0 16px 16px;}
-    .hero__grid{display:grid;grid-template-columns:2fr 1.5fr;gap:22px;align-items:stretch;}
-    .hero__image video{width:100%;height:100%;border-radius:var(--radius);box-shadow:var(--shadow);object-fit:cover;}
-
-    .hero__cta{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-    .tile{background:var(--mustard);border-radius:14px;padding:22px 18px;font-weight:700;text-align:center;box-shadow:var(--shadow-soft);cursor:pointer;}
+    .hero{max-width:var(--maxw);margin:20px auto;padding:0 16px;}
+    .hero__grid{display:grid;grid-template-columns:1.2fr 1.8fr;gap:24px;align-items:center;}
+    .hero__image video{width:100%;border-radius:var(--radius);box-shadow:var(--shadow);object-fit:cover;}
+    .hero__cta{display:flex;flex-direction:column;gap:16px;}
+    .hero__buttons{display:flex;gap:16px;}
+    .tile{flex:1;background:var(--mustard);border-radius:var(--radius);padding:16px;font-weight:600;text-align:center;cursor:pointer;box-shadow:var(--shadow);}
     .tile--alt{background:#ffdca0;}
-    .btn{padding:14px 18px;border-radius:10px;font-weight:700;background:var(--teal);color:#fff;box-shadow:var(--shadow);grid-column:1 / -1;cursor:pointer;}
-
-    /* ===== Sections ===== */
-    .section{max-width:var(--maxw);margin:40px auto 0;padding:0 16px;}
-    .section__title{text-align:center;font-size:clamp(22px,2.6vw,28px);}
-    .section__lead{text-align:center;max-width:700px;margin:0 auto 18px;color:var(--muted);}
-    .how video{width:100%;border-radius:12px;box-shadow:var(--shadow);}
-
+    .btn{padding:14px;border-radius:var(--radius);font-weight:700;background:var(--teal);color:#fff;cursor:pointer;box-shadow:var(--shadow);}
+    /* ===== Section ===== */
+    .section{max-width:var(--maxw);margin:40px auto;padding:0 16px;}
+    .section__title{text-align:center;font-size:24px;}
+    .section__lead{text-align:center;color:#555;margin-bottom:18px;}
+    .how video{width:100%;border-radius:var(--radius);box-shadow:var(--shadow);}
     /* ===== Footer ===== */
-    footer{margin-top:56px;padding:28px 16px 48px;background:#fff;border-top:1px solid #e8edf3;}
-    .foot__inner{max-width:var(--maxw);margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;color:var(--muted);}
+    footer{margin-top:50px;padding:24px 16px;background:#fff;border-top:1px solid #ddd;}
+    .foot__inner{max-width:var(--maxw);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
     .foot__brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--blue-ink);}
     .foot__brand img{width:40px;height:40px;border-radius:50%;object-fit:cover;}
-    .foot__links a{color:var(--blue-ink);margin-right:14px;font-weight:600;text-decoration:none;}
   </style>
 </head>
 <body>
-
   <!-- ===== Header ===== -->
   <header class="topbar">
     <div class="topbar__inner">
@@ -77,9 +56,8 @@
         <span class="brand__name">Les Factotums</span>
       </a>
       <div class="topbar__spacer"></div>
-      <a class="topbar__action" href="#">Changer de profil</a>
       <div class="icons">
-        <div class="icon icon--bell">🔔</div>
+        <div class="icon">🔔</div>
         <div class="icon">👤</div>
       </div>
     </div>
@@ -92,20 +70,20 @@
         <video src="lesfactotums.mp4" autoplay muted loop playsinline></video>
       </div>
       <div class="hero__cta">
-        <button class="tile">📝<br>Faire une demande</button>
-        <button class="tile tile--alt">📣<br>Voir les annonces</button>
-        <button class="tile">💬<br>Messagerie</button>
+        <div class="hero__buttons">
+          <button class="tile">📝<br>Faire une demande</button>
+          <button class="tile tile--alt">📣<br>Voir les annonces</button>
+          <button class="tile">💬<br>Messagerie</button>
+        </div>
         <button class="btn">Vos demandes</button>
       </div>
     </div>
   </section>
 
-  <!-- ===== Comment ça marche ===== -->
+  <!-- ===== Section ===== -->
   <section class="section">
     <h2 class="section__title">Comment ça marche ?</h2>
-    <p class="section__lead">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor.
-    </p>
+    <p class="section__lead">Présentation simple de la plateforme et de son fonctionnement.</p>
     <div class="how">
       <video src="lesfactotums.mp4" controls></video>
     </div>
@@ -118,18 +96,9 @@
         <img src="Logo factotum.JPG" alt="Logo Factotum">
         <span>Les Factotums</span>
       </div>
-      <div class="foot__links">
-        <a href="#">Mentions légales</a>
-        <a href="#">CGV</a>
-        <a href="#">CGU</a>
-        <a href="#">Contact</a>
-      </div>
       <div>© <span id="y">2025</span> — Prototype UI</div>
     </div>
   </footer>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
